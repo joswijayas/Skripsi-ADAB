@@ -98,7 +98,9 @@ public class TranscriptActivity extends AppCompatActivity {
 
     private void connectSocket() {
         try {
-            socket = IO.socket("https://adab.arutala.dev/");
+//            socket = IO.socket("https://adab.arutala.dev/");
+            socket = IO.socket("http://192.168.99.221:7759/");
+
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }

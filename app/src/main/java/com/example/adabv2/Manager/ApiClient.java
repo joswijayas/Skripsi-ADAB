@@ -8,7 +8,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
-    private static final String baseUrl = "https://adab.arutala.dev/api/v1/";
+//    private static final String baseUrl = "https://adab.arutala.dev/api/v1/";
+    private static final String baseUrl = "http://192.168.99.221:7759/";
 
     private static <T> T builder(Class<T> endpoint) {
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();

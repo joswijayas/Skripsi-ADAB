@@ -92,7 +92,7 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.MyViewHo
     private void chooseLanguage(int position) {
         final String[] languages = {"Indonesia", "Inggris", "Jepang", "Mandarin"};
         final String[] languagesID = {"id-ID", "en-US", "ja-JP", "zh"};
-        final String[] selectedItem = {"id-ID"};
+        final String[] selectedItem = {"zh"};
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.CustomAlertDialog);
         builder.setTitle(R.string.choose_language)

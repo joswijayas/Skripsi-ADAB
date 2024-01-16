@@ -58,7 +58,8 @@ public class ChatGroupActivity extends AppCompatActivity {
     private Socket socket;
     {
         try {
-            socket = IO.socket("https://adab.arutala.dev/");
+//            socket = IO.socket("https://adab.arutala.dev/");
+            socket = IO.socket("http://192.168.99.221:7759/");
             Log.wtf("masuk", "link socket");
 
         } catch (URISyntaxException e) {
@@ -102,12 +103,14 @@ public class ChatGroupActivity extends AppCompatActivity {
 
         recordBtn.setOnClickListener(v -> {
             if (socket.connected()) {
+                Log.d("debug socket connected", "test");
                 final boolean isPermissionGranted = ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED;
                 if (isPermissionGranted) {
                     ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, PERMISSION_RECORD_AUDIO_REQUEST);
                 }
                 else {
                     if (isStop) {
+                        Log.d("debug isstop", "masuk");
                         recordBtn.setColorFilter(ContextCompat.getColor(this, R.color.gray), android.graphics.PorterDuff.Mode.SRC_IN);
                         speechToText();
                     }
@@ -145,6 +148,8 @@ public class ChatGroupActivity extends AppCompatActivity {
                     JSONObject data = (JSONObject) args[0];
                     try {
                         String messageText = data.getString("msg");
+                        Log.d("data message", messageText);
+                        Log.d("data message2", "llalalala");
                         String username = data.getString("user_id");
                         Date date = DateFormatter.stringToDateMillisecond(data.getString("timestamp"));
                         String timestamp = DateFormatter.dateToTime(date);
@@ -160,6 +165,7 @@ public class ChatGroupActivity extends AppCompatActivity {
     }
 
     private void sendMessageToServer(String message) {
+        Log.d("debug sendMessageToServer", message);
         JSONObject data = new JSONObject();
         try {
             Date date = new Date();
@@ -183,6 +189,7 @@ public class ChatGroupActivity extends AppCompatActivity {
     }
 
     private void speechToText() {
+        Log.d("debug speechtotext", "test");
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
         speechRecognizer.startListening(speechRecognizerIntent);
 
@@ -218,9 +225,11 @@ public class ChatGroupActivity extends AppCompatActivity {
             @Override
             public void onResults(Bundle bundle) {
                 ArrayList<String> data = bundle.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
+                Log.d("debug data", data.get(0).toString());
                 if (data != null) {
                     recordBtn.setColorFilter(ContextCompat.getColor(ChatGroupActivity.this, R.color.blue), android.graphics.PorterDuff.Mode.SRC_IN);
                     isStop = true;
+                    Log.d("debug onResults", data.get(0).toString());
                     sendMessageToServer(data.get(0));
                 }
             }

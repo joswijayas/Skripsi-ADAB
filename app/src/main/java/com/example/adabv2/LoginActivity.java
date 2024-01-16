@@ -91,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
                 Toast.makeText(LoginActivity.this, "Login gagal", Toast.LENGTH_SHORT).show();
-                Log.wtf("error", t);
+                Log.wtf("errorloginnnn", t);
             }
         });
 //        Call<ResponseBody> callLogin = ApiClient.request().loginUser(loginRequest);

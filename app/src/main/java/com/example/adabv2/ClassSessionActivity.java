@@ -198,7 +198,7 @@ public class ClassSessionActivity extends AppCompatActivity implements ClassSess
     private void chooseLanguage(ClassSession classSession) {
         final String[] languages = {"Indonesia", "Inggris", "Jepang", "Mandarin"};
         final String[] languagesID = {"id-ID", "en-US", "ja-JP", "zh"};
-        final String[] selectedItem = {"id-ID"};
+        final String[] selectedItem = {"ja-JP"};
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.CustomAlertDialog);
         builder.setTitle(R.string.choose_language)
