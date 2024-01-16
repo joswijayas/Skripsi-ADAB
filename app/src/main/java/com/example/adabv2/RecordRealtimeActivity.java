@@ -103,7 +103,7 @@ public class RecordRealtimeActivity extends AppCompatActivity {
         try {
 
 //            socket = IO.socket("https://adab.arutala.dev/");
-            socket = IO.socket("http://192.168.99.221:7759/");
+            socket = IO.socket("http://192.168.132.221:7759/");
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
